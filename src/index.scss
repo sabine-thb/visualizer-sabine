@@ -1,0 +1,58 @@
+@font-face {
+  font-family: "Ogg Trial";
+  src: url(/fonts/Ogg-Medium.woff2) format("woff2")
+}
+
+@font-face {
+  font-family: "Public Sans Light";
+  src: url(/fonts/PublicSans-Light.woff2) format("woff2")
+}
+
+
+@font-face {
+  font-family: "Public Sans Bold";
+  src: url(/fonts/PublicSans-Bold.woff2) format("woff2")
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Public Sans Light", sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+
+.play {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+  margin: auto;
+  width: 100px;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --white: #ffffff;
+}
+
+:root {
+  font-size: calc(100vw / 1920 * 10);
+
+  font-size: calc(100vw / 1920 * 10); 
+  
+    @media (max-width: 1440px) {
+      font-size: calc(100vw / 1440 * 10);
+    }
+  
+    @media (max-width: 540px) {
+      font-size: calc(100vw / 390 * 10);
+    }
+}
