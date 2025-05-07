@@ -5,6 +5,8 @@ import useStore from "../../utils/store";
 import s from "./Track.module.scss";
 import hearthIcon from "/textures/icons/hearth.svg";
 import hearth2Icon from "/textures/icons/hearth2.svg";
+import PropTypes from "prop-types";
+// import TRACKS from "../../utils/TRACKS";
 
 const Track = ({ title, cover, src, duration, artists, index }) => {
   const { selectedTrack, setSelectedTrack, playlist, addToPlaylist, removeFromPlaylist: removeFromPlaylistStore } = useStore();
@@ -90,6 +92,7 @@ const Track = ({ title, cover, src, duration, artists, index }) => {
           ) : (
             <span className={s.artistName}>{artists?.name || "Artiste inconnu"}</span>
           )}
+
           <span className={s.duration}>{getSeconds()}</span>
         </div>
       </div>
@@ -108,6 +111,17 @@ const Track = ({ title, cover, src, duration, artists, index }) => {
       </div>
     </div>
   );
+};
+
+
+Track.propTypes = {
+  title: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+
+  artists: PropTypes.arrayOf(PropTypes.string).isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 export default Track;

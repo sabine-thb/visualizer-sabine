@@ -10,22 +10,11 @@ import fetchJsonp from "fetch-jsonp";
 import s from "./Tracks.module.scss";
 
 const Tracks = () => {
+
   // permet d'alterner entre true et false pour afficher / cacher le composant
   //const [showTracks, setShowTracks] = useState(false);
   const { tracks, setTracks } = useStore();
 
-  // écouter la variable tracks qui vient du store
-  //useEffect(() => {
-  //if (tracks.length > TRACKS.length) {
-  //setShowTracks(true);
-  //}
-  //}, [tracks]);
-
-  // TODO : Slider (infini ou non) pour sélectionner les tracks
-
-  // TODO : Fonction de tri / filtre sur les tracks, par nom, durée...
-
-  // TODO : Récupérer les tracks du store
 
   useEffect(() => {
     fetchMetadata(TRACKS, tracks, setTracks);

@@ -4,10 +4,9 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
   const promises = TRACKS.map(
     (track) =>
       new Promise((resolve, reject) => {
-        // get duration
         const audio = new Audio(track.path);
+
         audio.addEventListener("loadedmetadata", () => {
-          // Fetch the MP3 file as a Blob
           fetch(track.path)
             .then((response) => {
               if (!response.ok) {
@@ -16,31 +15,29 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
               return response.blob();
             })
             .then((blob) => {
-              // Read metadata from the Blob
               jsmediatags.read(blob, {
                 onSuccess: (tag) => {
                   const { title, artist, album, picture } = tag.tags;
-                  // Extract cover image if it exists
+
                   let cover = "https://placehold.co/600x400";
                   if (picture) {
                     const base64String = btoa(
-                      picture.data
-                        .map((char) => String.fromCharCode(char))
-                        .join("")
+                      picture.data.map((char) => String.fromCharCode(char)).join("")
                     );
                     cover = `data:${picture.format};base64,${base64String}`;
                   }
-                  let _artists = [];
-                  if (artist) {
-                    _artists = artist.split(",");
-                  }
+
+                  const fallbackArtist = track.artist || "Inconnu";
+                  const _artists = artist
+                    ? artist.split(",").map((a) => ({ name: a.trim() }))
+                    : [{ name: fallbackArtist }];
 
                   resolve({
                     index: track.id,
                     name: track.name,
                     title: title || track.name,
                     duration: audio.duration,
-                    artists: _artists || [],
+                    artists: _artists,
                     album: {
                       cover_xl: cover,
                       title: album || "Unknown Album",
@@ -49,19 +46,19 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
                   });
                 },
                 onError: (error) => {
-                  console.error(
-                    `Error reading metadata for ${track.name}:`,
-                    error
-                  );
+                  console.error(`Error reading metadata for ${track.name}:`, error);
+
+                  const fallbackArtist = track.artist || "Inconnu";
+
                   resolve({
                     index: track.id,
                     name: track.name,
                     title: track.name,
                     duration: audio.duration,
-                    artists: [],
+                    artists: [{ name: fallbackArtist }],
                     album: {
-                      cover_xl: cover,
-                      title: album || "Unknown Album",
+                      cover_xl: "https://placehold.co/600x400",
+                      title: "Unknown Album",
                     },
                     preview: track.path,
                   });
@@ -75,21 +72,14 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
         });
       })
   );
+
   try {
     const results = await Promise.all(promises);
 
-    // récupérer le tableau de tracks du store existant
-    const _tracks = [...tracks];
+    // Fusionner avec les tracks existants
+    const _tracks = [...tracks, ...results];
 
-    // pour chaque track processed par la librairie pour récupérer les metadata
-    results.forEach((result) => {
-      _tracks.push(result);
-    });
-
-    // màj le store
     setTracks(_tracks);
-
-    // _tracks.push(results)
   } catch (error) {
     console.error("Error fetching metadata:", error);
   }
