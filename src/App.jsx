@@ -1,5 +1,5 @@
 import Canvas from "./components/Canvas/Canvas";
-import Landing from "./components/Landing/Landing";
+import StartScreen from "./components/StartScreen/StartScreen";
 import Dropzone from "./components/Dropzone/Dropzone";
 import Tracks from "./components/Tracks/Tracks";
 import Picker from "./components/Picker/Picker";
@@ -9,7 +9,7 @@ import Playlist from "./components/Playlist/Playlist";
 function App() {
   return (
     <>
-      <Landing />
+      <StartScreen />
       <Dropzone />
       <Picker />
       <Tracks />

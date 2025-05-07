@@ -90,10 +90,10 @@ const Track = ({ title, cover, src, duration, artists, index }) => {
           ) : (
             <span className={s.artistName}>{artists?.name || "Artiste inconnu"}</span>
           )}
+          <span className={s.duration}>{getSeconds()}</span>
         </div>
       </div>
       <div className={s.controls}>
-        <span className={s.duration}>{getSeconds()}</span>
         <button
           className={`${s.addToPlaylist} ${isFavorite ? s.added : ''}`}
           onClick={handleAddToPlaylist}

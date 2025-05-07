@@ -1,34 +1,34 @@
 .track {
   display: flex;
+  width: 35rem;
   align-items: center;
   color: white;
-  padding: 10px 0;
-  padding-left: 10px;
-  border-radius: 8px;
-  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 0.8rem;
   position: relative;
+  background-color: rgba(#f284c269, 0.15);
+  cursor: pointer;
 
   &:hover {
-    background-color: rgba(white, 0.1);
-    
+    background-color: #cd589a69;
+
     .addToPlaylist {
       opacity: 1;
     }
   }
 
   &.active {
-    background-color: white;
-    color: black;
+    background-color: #cd589a69;
 
     .details {
       .artistName {
-        color: #333 !important;
+        color: #fffdfd !important;
       }
     }
-    
+
     .addToPlaylist {
       color: black;
-      
+
       &:hover {
         background-color: rgba(black, 0.1);
       }
@@ -46,22 +46,22 @@
     gap: 10px;
     margin-right: 10px;
 
-    .favorite{
-      width: 15px;
-      height: 15px;
+    .favorite {
+      width: 1.5rem;
+      height: 1.5rem;
 
     }
   }
 
   .duration {
+    font-size: 1rem;
     flex-shrink: 0;
+    margin-top: auto;
   }
-  
+
   .addToPlaylist {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
-    min-height: 30px;
+    width: 3rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,11 +74,11 @@
     z-index: 5;
     padding: 0;
     border: none;
-    
+
     &:hover {
       background-color: rgba(white, 0.2);
     }
-    
+
     &.added {
       opacity: 1;
       background-color: rgba(white, 0.3);
@@ -86,31 +86,35 @@
   }
 
   .title {
-    width: 50%;
+    width: 100%;
     display: flex;
-    gap: 12px;
+    gap: 1.2rem;
 
     .cover {
-      height: 40px;
-      width: 40px;
+      height: 8rem;
+      width: 8rem;
       object-fit: cover;
       border-radius: 4px;
     }
 
     .details {
+      width: 13rem;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
 
       .trackName {
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+        word-wrap: break-word;
+        white-space: normal;
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space: nowrap;
-        width: 300px;
+        width: fit-content;
       }
 
       .artistName {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         color: gray;
       }
     }

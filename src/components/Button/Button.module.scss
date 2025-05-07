@@ -8,6 +8,8 @@
   padding: 1.2rem 4rem;
   text-transform: uppercase;
   transition: padding 0.3s ease;
+  cursor: pointer;
+  border: none;
 
   &:hover {
     padding: 1.2rem 6rem;

@@ -1,9 +1,9 @@
-import s from "./Landing.module.scss";
+import s from "./StartScreen.module.scss";
 import AudioController from "../../utils/AudioController";
 import { useState, useEffect } from "react";
 import Button from "../Button/Button";
 
-const Landing = () => {
+const StartScreen = () => {
   const [hasClicked, setHasClicked] = useState(false);
   const [hideCompletely, setHideCompletely] = useState(false);
 
@@ -18,7 +18,7 @@ const Landing = () => {
   if (hideCompletely) return null;
 
   return (
-    <section className={`${s.landing} ${hasClicked ? s.landingHidden : ""}`}>
+    <section className={`${s.startScreen} ${hasClicked ? s.startScreenHidden : ""}`}>
       <div className={s.videoContainer}>
         <video
           className={s.video}
@@ -31,24 +31,24 @@ const Landing = () => {
         />
       </div>
       <div className={s.content}>
-          <p className={s.description}>
-            Une expérience immersive de visualisation musicale en 3D.
-          </p>
+        <p className={s.description}>
+          Une expérience immersive de visualisation musicale en 3D.
+        </p>
 
-          <h1 className={s.headerText} aria-hidden="true">
-            Visualizer
-          </h1>
+        <h1 className={s.headerText} aria-hidden="true">
+          Visualizer
+        </h1>
 
-          <p className={s.subtitle}>
-                Importez vos propres morceaux ou explorez des extraits de 30 secondes issus de Deezer.        
-          </p>
-          <Button label="Découvrir" onClick={onClick} />
+        <p className={s.subtitle}>
+          Importez vos propres morceaux ou explorez des extraits de 30 secondes issus de Deezer.
+        </p>
+        <Button label="Découvrir" onClick={onClick} />
 
       </div>
-        
-       
+
+
     </section>
   );
 };
 
-export default Landing;
+export default StartScreen;

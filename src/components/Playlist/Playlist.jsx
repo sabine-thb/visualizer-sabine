@@ -13,7 +13,7 @@ const Playlist = () => {
   const playTrack = (track) => {
     audioController.play(track.src);
     scene.cover.setCover(track.cover);
-    
+
     // Mettre à jour le track sélectionné avec ses propres informations
     setSelectedTrack({
       ...track
@@ -36,11 +36,11 @@ const Playlist = () => {
 
     return minutes + ":" + seconds;
   };
-  
+
   // Vérifier si un track est sélectionné
   const isTrackSelected = (track) => {
-    return selectedTrack && 
-      selectedTrack.title === track.title && 
+    return selectedTrack &&
+      selectedTrack.title === track.title &&
       selectedTrack.src === track.src;
   };
 
@@ -49,8 +49,8 @@ const Playlist = () => {
       <h3 className={s.title}>Mes sons prefs</h3>
       <div className={s.tracks}>
         {playlist.map((track, index) => (
-          <div 
-            key={`playlist-${track.title}-${index}`} 
+          <div
+            key={`playlist-${track.title}-${index}`}
             className={`${s.track} ${isTrackSelected(track) ? s.active : ''}`}
             onClick={() => playTrack(track)}
           >
@@ -68,17 +68,18 @@ const Playlist = () => {
               ) : (
                 <span className={s.artistName}>{track.artists?.name || "Artiste inconnu"}</span>
               )}
+              <span className={s.duration}>{getSeconds(track.duration)}</span>
             </div>
-            <span className={s.duration}>{getSeconds(track.duration)}</span>
-            <button 
-              className={s.removeButton} 
+
+            <button
+              className={s.removeButton}
               onClick={(e) => handleRemove(e, track)}
               title="Retirer de la playlist"
             >
               ×
             </button>
 
-            
+
           </div>
         ))}
       </div>

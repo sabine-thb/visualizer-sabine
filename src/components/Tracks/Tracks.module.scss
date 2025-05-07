@@ -1,37 +1,26 @@
 .searchInput {
-  background-color: transparent;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 0.5rem 2rem;
   border: none;
   outline: none;
-  padding-bottom: 8px;
-  color: white;
+  color: #000;
   border-bottom: solid 2px white;
   position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 20px;
-  width: 250px;
-}
-
-.searchContainer {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 300px;
+  top: 5rem;
+  left: 5rem;
+  font-size: 1.5rem;
+  width: 32rem;
 }
 
 .resetButton {
   position: fixed;
-  bottom: 12px;
-  right: 330px;
+  top: 5rem;
+  left: 40rem;
   background-color: rgba(255, 255, 255, 0.2);
   color: white;
-  width: 120px;
-  height: 40px;
-  min-width: 120px;
-  min-height: 40px;
+  width: 6rem;
+  height: 3rem;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -42,11 +31,16 @@
   padding: 0;
   border: none;
   z-index: 5;
-  
+
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
-  
+
   &:active {
     background-color: rgba(255, 255, 255, 0.4);
   }
@@ -61,18 +55,20 @@
   height: 100vh;
   z-index: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding-right: 20px;
 }
 
 .tracks {
   display: flex;
+  gap: 1rem;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 17vh;
-  max-height: 749px;
+  margin-top: 30rem;
+  max-height: 100%;
   overflow-y: auto;
   scrollbar-width: none;
+  margin-left: 5rem;
 }
 
 .tracks::-webkit-scrollbar {

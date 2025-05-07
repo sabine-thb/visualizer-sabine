@@ -16,9 +16,9 @@ const Tracks = () => {
 
   // écouter la variable tracks qui vient du store
   //useEffect(() => {
-    //if (tracks.length > TRACKS.length) {
-      //setShowTracks(true);
-    //}
+  //if (tracks.length > TRACKS.length) {
+  //setShowTracks(true);
+  //}
   //}, [tracks]);
 
   // TODO : Slider (infini ou non) pour sélectionner les tracks
@@ -54,7 +54,7 @@ const Tracks = () => {
       // erreurs
     }
   };
-  
+
   const resetTracks = () => {
     // Réinitialiser la liste des tracks avec les tracks locaux
     fetchMetadata(TRACKS, [], setTracks);
@@ -62,21 +62,19 @@ const Tracks = () => {
 
   return (
     <section className={s.wrapper}>
-      <div className={s.searchContainer}>
-        <input
-          type="text"
-          placeholder="Chercher un artiste"
-          className={s.searchInput}
-          onKeyDown={onKeyDown}
-        />
-      </div>
-      
-      <button 
-        className={s.resetButton} 
+      <input
+        type="text"
+        placeholder="Rechercher un morceau..."
+        className={s.searchInput}
+        onKeyDown={onKeyDown}
+      />
+
+      <button
+        className={s.resetButton}
         onClick={resetTracks}
-        title="Réinitialiser la liste des tracks"
+        title="Réinitialiser la recherche"
       >
-        Réinitialiser la recherche
+        <img src="/textures/icons/restart.svg" alt="Réinitialiser la recherche" />
       </button>
 
       <div className={s.tracks}>

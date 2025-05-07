@@ -9,7 +9,7 @@ const SelectedTrack = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const timelineRef = useRef(null);
 
-  
+
   const isDeezerPreview = selectedTrack?.src?.includes("cdnt-preview.dzcdn.net");
 
   const effectiveDuration = isDeezerPreview ? 30 : selectedTrack?.duration || 0;
@@ -17,32 +17,13 @@ const SelectedTrack = () => {
   console.log("selectedTrack.src:", selectedTrack?.src);
 
 
-
-  // // Mettre à jour l'état de lecture et réinitialiser le temps lorsque le track change
-  // useEffect(() => {
-  //   if (selectedTrack) {
-  //     setIsPlaying(audioController.isPlaying);
-  //     setCurrentTime(0); // Réinitialiser la position au changement de track
-  //     if (timelineRef.current) {
-  //       timelineRef.current.value = 0;
-  //     }
-  //   }
-  // }, [selectedTrack]);
-
-  // useEffect(() => {
-  //   if (selectedTrack && timelineRef.current) {
-  //     timelineRef.current.max = isDeezerPreview ? 30 : selectedTrack.duration || 0;
-  //     timelineRef.current.value = Math.min(currentTime, effectiveDuration);
-  //   }
-  // }, [currentTime, selectedTrack, effectiveDuration, isDeezerPreview]);
-
   useEffect(() => {
     if (selectedTrack && timelineRef.current) {
       timelineRef.current.max = effectiveDuration;
       timelineRef.current.value = Math.min(currentTime, effectiveDuration);
     }
   }, [currentTime, selectedTrack, effectiveDuration, isDeezerPreview]);
-  
+
 
 
 
@@ -61,14 +42,14 @@ const SelectedTrack = () => {
     const updateTime = () => {
       const time = audioController.getCurrentTime();
       setCurrentTime(time);
-  
+
       if (isDeezerPreview && time >= 30) {
         audioController.pause();
         audioController.setCurrentTime(0);
         setIsPlaying(false);
       }
     };
-  
+
     audioController.addEventListener("timeupdate", updateTime);
     return () => audioController.removeEventListener("timeupdate", updateTime);
   }, [isDeezerPreview]);
@@ -125,21 +106,20 @@ const SelectedTrack = () => {
           </div>
           <div className={s.durationContainer}>
             <p className={s.currentTime}>{formatTime(currentTime)}</p>
-            {/* <p className={s.duration}>/{formatTime(selectedTrack.duration)}</p> */}
-            <p className={s.duration}>/{formatTime(effectiveDuration)}</p>
+            <p className={s.duration}>  / {formatTime(effectiveDuration)}</p>
 
           </div>
           <div className={s.controls}>
-          <input
-            type="range"
-            ref={timelineRef}
-            className={s.timeline}
-            value={Math.min(currentTime, effectiveDuration)} // Capper à 30 si Deezer
-            min={0}
-            max={isDeezerPreview ? 30 : effectiveDuration}
-            onChange={handleTimelineChange}
-            aria-label="Timeline de lecture"
-          />
+            <input
+              type="range"
+              ref={timelineRef}
+              className={s.timeline}
+              value={Math.min(currentTime, effectiveDuration)}
+              min={0}
+              max={isDeezerPreview ? 30 : effectiveDuration}
+              onChange={handleTimelineChange}
+              aria-label="Timeline de lecture"
+            />
             <button
               className={s.playPauseButton}
               onClick={handlePlayPause}
