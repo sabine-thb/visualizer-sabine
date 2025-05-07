@@ -73,7 +73,6 @@ class AudioController {
 
   pause = () => {
     if (this.audio && this.isPlaying) {
-      console.log("AudioController - pause - currentTime:", this.audio.currentTime);
       this.audio.pause();
       this.isPlaying = false;
     }
@@ -81,7 +80,6 @@ class AudioController {
 
   resume = () => {
     if (this.audio && !this.isPlaying) {
-      console.log("AudioController - resume - currentTime:", this.audio.currentTime);
       this.audio.play();
       this.isPlaying = true;
     }

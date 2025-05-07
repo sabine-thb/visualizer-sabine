@@ -1,9 +1,9 @@
 import useStore from "../../utils/store";
 import audioController from "../../utils/AudioController";
 import scene from "../../webgl/Scene";
-import s from "./Playlist.module.scss";
+import s from "./Favourites.module.scss";
 
-const Playlist = () => {
+const Favourites = () => {
   const { playlist, removeFromPlaylist, setSelectedTrack, selectedTrack } = useStore();
 
   if (playlist.length === 0) {
@@ -87,4 +87,4 @@ const Playlist = () => {
   );
 };
 
-export default Playlist; 
+export default Favourites; 

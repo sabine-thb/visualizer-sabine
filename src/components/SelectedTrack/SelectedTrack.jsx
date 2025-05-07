@@ -14,7 +14,6 @@ const SelectedTrack = () => {
 
   const effectiveDuration = isDeezerPreview ? 30 : selectedTrack?.duration || 0;
 
-  console.log("selectedTrack.src:", selectedTrack?.src);
 
 
   useEffect(() => {
@@ -70,19 +69,14 @@ const SelectedTrack = () => {
   };
 
   const handlePlayPause = () => {
-    console.log("handlePlayPause - isPlaying avant toggle:", isPlaying);
     const newPlayingState = audioController.togglePlayPause();
     setIsPlaying(newPlayingState);
-    console.log("handlePlayPause - isPlaying après toggle:", newPlayingState);
-    console.log("handlePlayPause - audioController.currentTime:", audioController.getCurrentTime());
   };
 
   const handleTimelineChange = (event) => {
     const newTime = parseFloat(event.target.value);
-    console.log("handleTimelineChange - newTime:", newTime);
     audioController.setCurrentTime(newTime);
     setCurrentTime(newTime);
-    console.log("handleTimelineChange - audioController.currentTime après set:", audioController.getCurrentTime());
   };
 
   return (

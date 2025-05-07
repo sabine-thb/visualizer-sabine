@@ -32,8 +32,6 @@ const Picker = () => {
   const pickVisualizer = (index) => {
     // changer visuellement la liste
     setCurrent(index);
-    console.log("index", index);
-    console.log(VISUALIZERS[index].name);
 
 
     // appeler la méthode qui permet de changer d'objet 3D
