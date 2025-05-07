@@ -15,10 +15,11 @@ import Board from "./objects/Board";
 import LogoIut from "./objects/LogoIut";
 import Cover from "./objects/Cover";
 import Box from "./objects/Box";
+import Cube from "./objects/Cube";
 import audioController from "../utils/AudioController";
 
 class Scene {
-  constructor() {}
+  constructor() { }
 
   setup(canvas) {
     this.canvas = canvas;
@@ -34,7 +35,7 @@ class Scene {
     this.setupControls();
     //this.setupStats();
     this.setupPostProcessing();
-    
+
     this.setupTextureLoader();
     this.setupGltfLoader();
 
@@ -81,8 +82,8 @@ class Scene {
   }
 
   //setupStats() {
-    //this.stats = new Stats();
-    //document.body.appendChild(this.stats.dom);
+  //this.stats = new Stats();
+  //document.body.appendChild(this.stats.dom);
   //}
 
   addObjects() {
@@ -92,7 +93,7 @@ class Scene {
     this.logoIut = new LogoIut();
     this.cover = new Cover();
     this.box = new Box();
-    // this.cube = new Cube();
+    this.cube = new Cube();
     // ....
 
     // ajout de l'objet à la scène par défaut
@@ -119,6 +120,13 @@ class Scene {
 
   setupScene() {
     this.scene = new THREE.Scene();
+
+    this.ambientLight = new THREE.AmbientLight(0x404040, 1);
+    this.scene.add(this.ambientLight);
+    this.directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    this.directionalLight.position.set(5, 5, 5);
+    this.directionalLight.castShadow = true;
+    this.scene.add(this.directionalLight);
   }
 
   setupCamera() {
@@ -150,13 +158,13 @@ class Scene {
     switch (index) {
       case 0:
         // line
-        this.camera.position.z = 200;
-        this.currentObject = this.line;
+        this.camera.position.z = 20;
+        this.currentObject = this.board;
         break;
       case 1:
         // board
-        this.camera.position.z = 20;
-        this.currentObject = this.board;
+        this.camera.position.z = 200;
+        this.currentObject = this.line;
         break;
       case 2:
         // logo iut
@@ -175,8 +183,10 @@ class Scene {
         this.currentObject = this.cover;
         break;
       case 4:
-        this.camera.position.z = 0.5;
-        this.currentObject = this.recordplayer;
+        this.camera.position.z = 2;
+        this.currentObject = this.cube;
+        break;
+
       default:
         break;
     }

@@ -4,11 +4,11 @@ import s from "./Picker.module.scss";
 
 const VISUALIZERS = [
   {
-    name: "Line",
+    name: "Board",
     index: 0,
   },
   {
-    name: "Board",
+    name: "Line",
     index: 1,
   },
   {
@@ -19,6 +19,11 @@ const VISUALIZERS = [
     name: "Cover",
     index: 3,
   },
+  {
+    name: "Cube",
+    index: 4,
+  }
+
 ];
 
 const Picker = () => {
@@ -27,6 +32,9 @@ const Picker = () => {
   const pickVisualizer = (index) => {
     // changer visuellement la liste
     setCurrent(index);
+    console.log("index", index);
+    console.log(VISUALIZERS[index].name);
+
 
     // appeler la méthode qui permet de changer d'objet 3D
     scene.pickVisualizer(index);

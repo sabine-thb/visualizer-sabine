@@ -11,6 +11,7 @@ export default class LogoIUT {
 
         this.matcap = scene.textureLoader.load(("/textures/matcap.png"))
         this.matcap2 = scene.textureLoader.load(("/textures/matcap-2.png"))
+        this.matcap3 = scene.textureLoader.load(("/textures/matcap-3.png"))
 
         this.material = new THREE.MeshMatcapMaterial({
             matcap: this.matcap
@@ -38,7 +39,7 @@ export default class LogoIUT {
                 }
 
                 this.sphere = this.group.getObjectByName("Icosphere")
-                this.sphere.material = this.material2
+                this.sphere.material = this.material
 
                 this.left = this.group.getObjectByName("BezierCircle");
                 this.right = this.group.getObjectByName("BezierCircle002");

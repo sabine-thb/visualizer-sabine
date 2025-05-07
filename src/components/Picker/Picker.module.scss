@@ -8,7 +8,6 @@
   align-items: flex-end;
   color: white;
   z-index: 2;
-  ;
 
   span {
     font-family: "Public Sans Bold", sans-serif;
@@ -24,4 +23,22 @@
   .current {
     opacity: 1;
   }
+}
+
+
+@media(max-width: 540px) {
+
+  .picker {
+    left: 50%;
+    transform: translateX(-50%);
+    flex-wrap: wrap;
+    width: 100%;
+
+
+    span {
+      font-size: 1.5rem;
+    }
+  }
+
+
 }
