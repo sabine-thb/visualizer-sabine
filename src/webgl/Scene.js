@@ -183,7 +183,7 @@ class Scene {
         this.currentObject = this.cover;
         break;
       case 4:
-        this.camera.position.z = 2;
+        this.camera.position.z = 3;
         this.currentObject = this.cube;
         break;
 
